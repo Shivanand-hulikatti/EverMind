@@ -1,13 +1,12 @@
 import mongoose from "mongoose";
-import { userModel,linkModel,tagModel } from "./user";
+import { userModel,linkModel,tagModel,otpModel} from "./user";
 import { contentModel } from "./content";
 
 
-const DB_URI = process.env.DB_URI;
 
-async function connectDb (DB_URI:string){
+async function connectDb (){
     try{
-        await mongoose.connect(DB_URI);
+        await mongoose.connect(process.env.DATABASE_URL as string);
         console.log('Database connected');
     }catch(err){
         console.log(err);
@@ -15,4 +14,4 @@ async function connectDb (DB_URI:string){
 }
 
 
-export {connectDb,userModel,linkModel,tagModel,contentModel};
+export {connectDb,userModel,linkModel,tagModel,contentModel,otpModel};
