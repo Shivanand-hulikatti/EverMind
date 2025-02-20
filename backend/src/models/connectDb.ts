@@ -1,7 +1,4 @@
 import mongoose from "mongoose";
-import { userModel,linkModel,tagModel} from "./user";
-import { contentModel } from "./content";
-
 
 
 async function connectDb (){
@@ -13,5 +10,4 @@ async function connectDb (){
     }
 }
 
-
-export {connectDb,userModel,linkModel,tagModel,contentModel};
+export {connectDb};

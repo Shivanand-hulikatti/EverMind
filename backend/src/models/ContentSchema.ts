@@ -32,5 +32,4 @@ const contentSchema = new mongoose.Schema({
 
 const contentModel = mongoose.model('Content',contentSchema);
 
-// module.exports = contentModel;
 export {contentModel};
