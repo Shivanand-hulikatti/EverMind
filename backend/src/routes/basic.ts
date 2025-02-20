@@ -1,6 +1,7 @@
 import express, { Request, Response } from 'express';
 import nodemailer from 'nodemailer';
-import { userModel } from '../db';
+import { contentModel, userModel } from '../db';
+import authMiddleware from './middleware';
 import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
 dotenv.config();
@@ -195,20 +196,69 @@ router.post('/forgot-password',async (req:Request,res:Response)=>{
 
 
 // @ts-ignore
-router.post('/content',async (req:Request,res:Response)=>{
+router.post('/content',authMiddleware,async (req:Request,res:Response)=>{
+    const {userId} = req.body;
+    const {type,link,title} = req.body;
 
+    try{
+
+        if(!userId){
+            res.status(400).json({message:"User not found"});
+        }
+
+        const content = await contentModel.create({
+            type,
+            title,
+            tags:[],
+            link,
+            userId
+        });
+
+        res.status(200).json({message:"Content created successfully",content});
+
+    }catch(err){
+        res.status(500).json({message:"Internal server error"});
+    }
 });
 
 
 // @ts-ignore
-router.get('/content',async (req:Request,res:Response)=>{
+router.get('/content',authMiddleware,async (req:Request,res:Response)=>{
+    const {userId} = req.body;
 
+    try{
+
+        if(!userId){
+            res.status(400).json({message:"User not found"});
+        }
+
+        const content = await contentModel.find({userId}).populate("userId","username");
+
+        res.status(200).json({content});
+    }catch(err){
+        res.status(500).json({message:"Internal server error"});
+    }
 });
 
 
 // @ts-ignore
-router.delete('/content',async (req:Request,res:Response)=>{
+router.delete('/content',authMiddleware,async (req:Request,res:Response)=>{
+    const {userId} = req.body;
 
+    try{
+
+        if(!userId){
+            res.status(400).json({message:"User not found"});
+        }
+
+        const content = await contentModel.deleteMany({userId});
+
+        res.status(200).json({message:"Content deleted successfully",content});
+
+    }catch(err){
+        res.status(500).json({message:"Internal server error"});
+    }
 });
+
 
 export default router;
