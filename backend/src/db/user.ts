@@ -43,30 +43,12 @@ const tagSchema = new mongoose.Schema({
     }
 })
 
-const otpSchema = new mongoose.Schema({
-    email:{
-        type:mongoose.Schema.Types.ObjectId,
-        ref:'User',
-        required:true
-    },
-    otp:{
-        type:String,
-        required:true
-    },
-    createdAt:{
-        type:Date,
-        default:Date.now,
-        expires: 300
-    }
-})
-
 const userModel = mongoose.model('User',userSchema);
 
 const linkModel = mongoose.model('Link',LinkSchema);
 
 const tagModel = mongoose.model('Tag',tagSchema);
 
-const otpModel = mongoose.model('Otp',otpSchema);
 
 // module.exports = {
 //     userModel,
@@ -74,4 +56,4 @@ const otpModel = mongoose.model('Otp',otpSchema);
 //     tagModel
 // }
 
-export {userModel,linkModel,tagModel,otpModel};
+export {userModel,linkModel,tagModel};

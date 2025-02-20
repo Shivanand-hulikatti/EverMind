@@ -8,8 +8,6 @@ dotenv.config();
 const router = express.Router();
 
 
-
-
 // @ts-ignore
 router.post('/share',authMiddleware,async (req:Request,res:Response)=>{
     const share = req.body.share;
