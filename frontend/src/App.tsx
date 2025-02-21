@@ -1,12 +1,14 @@
-import { Button } from "./components/ui/button"
+import { BrowserRouter, Route, Routes } from "react-router-dom"
+import Landing from "./pages/Landing"
 
 
 function App() {
   return (
-    <>
-      <div className="text-red-600">App</div>
-      <Button>Hidb</Button>
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Landing />} />
+      </Routes>
+    </BrowserRouter>
   )
 }
 
