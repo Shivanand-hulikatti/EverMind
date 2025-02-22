@@ -22,22 +22,27 @@ const Form = ({...props}) => {
             </div>: null}
             <div className="space-y-2">
                 <Label htmlFor="email">Email</Label>
-                <Input id="email" placeholder="ilovemusic@gmail.com" type="email" className="mt-1"/>
+                <Input id="email" placeholder="batman@gmail.com" type="email" className="mt-1"/>
             </div>
-            <div>
+            {props.link && <div>
                 <div className="flex justify-between">
                     <Label htmlFor="password">Password</Label>
-                    {(props.title==='Login')?<span className="hover:underline underline-offset-4 cursor-pointer">Forgot password?</span>:null}
+                    {(props.title==='Login')?
+                        <span onClick={()=>navigate('/reset-password')}
+                        className="hover:underline underline-offset-4 cursor-pointer">
+                            Forgot password?
+                        </span>
+                    :null}
                 </div>
                 <Input id="password" placeholder="meowmeow" type="password" className="mt-1"/>
-            </div>  
+            </div>  }
             <div>
                 <Button className="w-full">{props.button}</Button>
             </div>
             <div>
-                <div className="text-center text-sm text-gray-400">
+                {props.link && <div className="text-center text-sm text-gray-400">
                     {(props.title === 'Register')?`Already`:`Don't`} have an account? <a onClick={()=>navigate(props.link)} className="underline underline-offset-4 cursor-pointer">Sign in</a>
-                </div>
+                </div>}
             </div>
         </div>
     </div>
