@@ -1,16 +1,16 @@
-import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar"
-import { AppSidebar } from "@/components/app-sidebar"
+import Sidebar from "@/components/sidebar"
 
-export default function Layout() {
+
+
+const DashBoard = () => {
   return (
-    <SidebarProvider>
-      <AppSidebar />
-      <main>
-        <SidebarTrigger />
-        <div>
-            
-        </div>
-      </main>
-    </SidebarProvider>
+    <div className="flex">
+      <Sidebar />
+      <div>
+        other things
+      </div>
+    </div>
   )
 }
+
+export default DashBoard
