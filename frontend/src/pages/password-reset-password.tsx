@@ -1,6 +1,6 @@
 import Otp from "@/components/Otp"
 
-const SignupOtp = () => {
+const ResetOtp = () => {
   return (
     <>
       <Otp />
@@ -8,4 +8,4 @@ const SignupOtp = () => {
   )
 }
 
-export default SignupOtp
+export default ResetOtp
