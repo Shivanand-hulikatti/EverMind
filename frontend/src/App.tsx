@@ -6,7 +6,7 @@ import Reset from "./pages/Reset"
 import NewPassword from "./pages/NewPass"
 import SignupOtp from "./pages/SignupOtp"
 import ResetOtp from "./pages/password-reset-password"
-import DashBoard from "./pages/DashBoard"
+import { DashBoard } from "./pages/DashBoard"
 
 
 function App() {
